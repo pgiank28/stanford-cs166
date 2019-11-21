@@ -9,7 +9,7 @@ node buildingCartesianTree(vector<int> array){
   for(vector<int>::iterator it = array.begin(); it!= array.end(); ++it){
     node nw =(node)malloc(sizeof(struct nodes));
     nw->value = *it;
-    nw->position = it;
+    nw->position = i;
     cartessianTree = expandTree(cartessianTree,nw);
     i=i+1;
   }
@@ -18,7 +18,7 @@ node buildingCartesianTree(vector<int> array){
 }
 
 node expandTree(node tree,node n){
-  if(tree[0]->value==0){
+  if(!tree){
     return n;
   }
   node root = tree;

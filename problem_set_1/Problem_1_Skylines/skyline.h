@@ -1,11 +1,13 @@
+#include <bits/stdc++.h>
 using namespace std;
 
 struct nodes{
   int value;
   int position;
-  nodes leftChild;
-  nodes rightChild;
-}
+  nodes* leftChild;
+  nodes* rightChild;
+};
+
 
 typedef struct nodes* node;
 
