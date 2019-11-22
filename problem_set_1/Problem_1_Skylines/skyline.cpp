@@ -1,6 +1,43 @@
 #include <iostream>
 #include "skyline.h"
 
+int calculateMaximumSkylineArea(node* cartessianTree){
+  if((*cartessianTree)==NULL){
+    return 0;
+  }
+  int r = calculateMaximumSkylineArea(&((*cartessianTree)->rightChild));
+  int l = calculateMaximumSkylineArea(&((*cartessianTree)->leftChild));
+  int in = ((*cartessianTree)->value)*(findNumberOfChildren(cartessianTree));
+
+  if(r>=l && r>=in){ return r;}
+  else{
+    if(r<l && in<=l){return l;}
+    else{ return in;}
+  }
+}
+
+
+int findNumberOfChildren(node* cartessianTree){
+
+  if((*cartessianTree) == NULL){ return 0;}
+  int l = findNumberOfChildren(&((*cartessianTree)->leftChild));
+  int r = findNumberOfChildren(&((*cartessianTree)->rightChild));
+  return l+r+1;
+}
+
+int findArea(int x,int y,node* cartessianTree){
+  node tmp = (node)malloc(sizeof(struct nodes));
+  tmp = (*cartessianTree);
+  while(tmp->position < x || tmp->position > y){
+    if(tmp->position < x){
+      tmp = tmp->rightChild;
+    }else{
+      tmp = tmp->leftChild;
+    }
+  }
+  return(y-x)*tmp->value;
+}
+
 node buildingCartesianTree(vector<int> array){
   int i=0;
 
