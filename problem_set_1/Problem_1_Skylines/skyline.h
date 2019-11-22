@@ -13,4 +13,6 @@ typedef struct nodes* node;
 
 node buildingCartesianTree(vector<int> array);
 int findMinimumValue(int leftPos,int rightPos);
-node expandTree(node tree,node n);
+void expandTree(node* tree,node n);
+void printTree(node* root);
+void printTreePositions(node* root);

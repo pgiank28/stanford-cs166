@@ -6,8 +6,8 @@ skyline.o: skyline.cpp
 
 skylineTests.o: skylineTests.cpp
 	$(CC) $(CFLAGS) skylineTests.cpp
-	
-all: *.o
+
+all: skyline.o skylineTests.o
 	$(CC) *.o -o all
 
 clean:
